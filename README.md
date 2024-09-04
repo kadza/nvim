@@ -7,5 +7,7 @@
 # Plugins
 
 - noice
-- search, cmdline in a popup in a middle instead of bottom
-- messages in nofications
+  -- search, cmdline in a popup in a middle instead of bottom
+  -- messages in nofications
+- gitsigns
+  -- current line blame
