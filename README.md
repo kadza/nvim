@@ -1,6 +1,7 @@
 # TODO:
 
 - harpoon
+- spell checker
 
 # Plugins
 

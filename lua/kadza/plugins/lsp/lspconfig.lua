@@ -106,6 +106,18 @@ return {
           },
         })
       end,
+      ["vtsls"] = function()
+        lspconfig["vtsls"].setup({
+          capabilities = capabilities,
+          settings = {
+            typescript = {
+              preferences = {
+                importModuleSpecifier = "relative",
+              },
+            },
+          },
+        })
+      end,
     })
   end,
 }
