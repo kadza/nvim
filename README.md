@@ -25,3 +25,7 @@
 - https://github.com/ThePrimeagen/init.lua/tree/master
 - spelling: https://johncodes.com/posts/2023/02-25-nvim-spell/
 - option list: https://neovim.io/doc/user/quickref.html#option-list
+
+# Tips
+
+https://www.youtube.com/watch?v=5BU2gBOe9RU
