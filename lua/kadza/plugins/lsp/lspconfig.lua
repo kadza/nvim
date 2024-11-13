@@ -83,14 +83,12 @@ return {
         })
       end,
       ["graphql"] = function()
-        -- configure graphql language server
         lspconfig["graphql"].setup({
           capabilities = capabilities,
-          filetypes = { "graphql", "gql", "svelte", "typescriptreact", "javascriptreact" },
+          filetypes = { "graphql", "gql" },
         })
       end,
       ["lua_ls"] = function()
-        -- configure lua server (with special settings)
         lspconfig["lua_ls"].setup({
           capabilities = capabilities,
           settings = {
@@ -114,6 +112,18 @@ return {
               preferences = {
                 importModuleSpecifier = "relative",
               },
+            },
+          },
+        })
+      end,
+      ["stylelint_lsp"] = function()
+        lspconfig["stylelint_lsp"].setup({
+          capabilities = capabilities,
+          filetypes = { "css", "scss", "less", "sass" },
+          settings = {
+            stylelintplus = {
+              autoFixOnFormat = true,
+              autoFixOnSave = true,
             },
           },
         })

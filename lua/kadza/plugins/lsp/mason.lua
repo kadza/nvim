@@ -27,22 +27,23 @@ return {
     mason_lspconfig.setup({
       -- list of servers for mason to install
       ensure_installed = {
-        "vtsls",
-        "html",
-        "cssls",
-        "lua_ls",
         "graphql",
+        "html",
+        "lua_ls",
+        "stylelint_lsp",
+        "vtsls",
       },
     })
 
     mason_tool_installer.setup({
       ensure_installed = {
-        "prettierd", -- prettier formatter
-        "stylua", -- lua formatter
-        "isort", -- python formatter
         "black", -- python formatter
-        "pylint",
         "eslint_d",
+        "isort", -- python formatter
+        "prettierd", -- prettier formatter
+        "pylint",
+        "stylelint",
+        "stylua", -- lua formatter
       },
     })
   end,
