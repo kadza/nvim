@@ -46,6 +46,7 @@ return {
 
     local keymap = vim.keymap
 
+    keymap.set("n", "<leader>e", "", { desc = "+file explorer" })
     keymap.set("n", "<leader>ee", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file explorer" })
     vim.keymap.set("n", "<leader>ef", function()
       require("nvim-tree.api").tree.find_file({ open = true, focus = true })
