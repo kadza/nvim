@@ -9,7 +9,6 @@ keymap.set("n", "n", "nzzzv", { desc = "Next search term with cursor in the midd
 keymap.set("n", "N", "Nzzzv", { desc = "Previous search term with cursor in the middle" })
 keymap.set("x", "<leader>p", [["_dP]], { desc = "keeps the pasted value in a buffer instead of replacing it" })
 keymap.set("i", "jk", "<Esc>", { desc = "Esc" })
-keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Rename under cursor" })
 keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" }) -- split window vertically
 keymap.set("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" }) -- split window horizontally
 keymap.set("n", "<leader>se", "<C-w>=", { desc = "Make splits equal size" }) -- make split windows equal width & height
