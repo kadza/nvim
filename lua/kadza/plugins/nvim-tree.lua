@@ -13,7 +13,6 @@ return {
         width = 45,
         relativenumber = true,
       },
-      -- change folder arrow icons
       renderer = {
         indent_markers = {
           enable = true,
@@ -21,8 +20,8 @@ return {
         icons = {
           glyphs = {
             folder = {
-              arrow_closed = "", -- arrow when folder is closed
-              arrow_open = "", -- arrow when folder is open
+              arrow_closed = "",
+              arrow_open = "",
             },
           },
         },
@@ -45,13 +44,12 @@ return {
       },
     })
 
-    -- set keymaps
-    local keymap = vim.keymap -- for conciseness
+    local keymap = vim.keymap
 
-    keymap.set("n", "<leader>ee", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file explorer" }) -- toggle file explorer
+    keymap.set("n", "<leader>ee", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file explorer" })
     vim.keymap.set("n", "<leader>ef", function()
       require("nvim-tree.api").tree.find_file({ open = true, focus = true })
-    end, { noremap = true, silent = true })
-    keymap.set("n", "<leader>er", "<cmd>NvimTreeRefresh<CR>", { desc = "Refresh file explorer" }) -- refresh file explorer
+    end, { noremap = true, silent = true, desc = "Open file explorer with current file focus" })
+    keymap.set("n", "<leader>er", "<cmd>NvimTreeRefresh<CR>", { desc = "Refresh file explorer" })
   end,
 }
