@@ -3,6 +3,7 @@ return {
   dependencies = { "nvim-tree/nvim-web-devicons", "folke/todo-comments.nvim" },
   opts = {
     focus = true,
+    wrap = true,
   },
   cmd = "Trouble",
   keys = {
