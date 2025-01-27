@@ -40,6 +40,7 @@ return {
         "black", -- python formatter
         "eslint_d",
         "isort", -- python formatter
+        "js-debug-adapter", -- javascript/typescript debugger
         "prettierd", -- prettier formatter
         "pylint",
         "stylelint",
