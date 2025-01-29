@@ -25,6 +25,7 @@
 - https://github.com/ThePrimeagen/init.lua/tree/master
 - spelling: https://johncodes.com/posts/2023/02-25-nvim-spell/
 - option list: https://neovim.io/doc/user/quickref.html#option-list
+- debugging infra: https://www.darricheng.com/posts/setting-up-nodejs-debugging-in-neovim/
 
 # Tips
 
