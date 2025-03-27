@@ -32,12 +32,19 @@ return {
       })
     end
 
+    local function git_files_with_input()
+      local input = vim.fn.input("Git Files: ")
+      builtin.git_files({
+        default_text = input,
+      })
+    end
+
     telescope.load_extension("fzf")
 
     local keymap = vim.keymap
 
     keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Fuzzy find files in cwd" })
-    keymap.set("n", "<leader><leader>", "<cmd>Telescope git_files<cr>", { desc = "Fuzzy find git files in cwd" })
+    keymap.set("n", "<leader><leader>", git_files_with_input, { desc = "Fuzzy find git files in cwd with input" })
     keymap.set("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { desc = "Fuzzy find recent files" })
     keymap.set(
       "n",
