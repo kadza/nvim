@@ -30,6 +30,7 @@ return {
         "graphql",
         "html",
         "lua_ls",
+        "rust_analyzer",
         "stylelint_lsp",
         "vtsls",
       },
@@ -44,6 +45,7 @@ return {
         "prettierd", -- prettier formatter
         "pylint",
         "stylelint",
+        "rustfmt", -- Rust formatter
         "stylua", -- lua formatter
       },
     })
