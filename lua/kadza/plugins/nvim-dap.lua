@@ -103,6 +103,20 @@ return {
           {
             type = "pwa-node",
             request = "attach",
+            name = "Attach to Docker Process",
+            localRoot = vim.fn.getcwd(),
+            cwd = "${workspaceFolder}",
+            remoteRoot = "/workspaces/backend/api",
+            websocketAddress = function()
+              return string.match(
+                vim.api.nvim_exec('!docker logs [mw_backend_test]|& grep -oE "ws.*" | tail -1', true),
+                "ws:.*"
+              )
+            end,
+          },
+          {
+            type = "pwa-node",
+            request = "attach",
             name = "Attach",
             processId = require("dap.utils").pick_process,
             cwd = "${workspaceFolder}",
