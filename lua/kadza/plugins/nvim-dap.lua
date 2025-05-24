@@ -95,13 +95,6 @@ return {
         dap.configurations[language] = {
           {
             type = "pwa-node",
-            request = "launch",
-            name = "Launch file",
-            program = "${file}",
-            cwd = "${workspaceFolder}",
-          },
-          {
-            type = "pwa-node",
             request = "attach",
             name = "Attach to Docker Process",
             localRoot = vim.fn.getcwd(),
@@ -116,8 +109,15 @@ return {
           },
           {
             type = "pwa-node",
+            request = "launch",
+            name = "Launch file",
+            program = "${file}",
+            cwd = "${workspaceFolder}",
+          },
+          {
+            type = "pwa-node",
             request = "attach",
-            name = "Attach",
+            name = "Attach to process",
             processId = require("dap.utils").pick_process,
             cwd = "${workspaceFolder}",
           },

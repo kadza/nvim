@@ -26,6 +26,7 @@
 - spelling: https://johncodes.com/posts/2023/02-25-nvim-spell/
 - option list: https://neovim.io/doc/user/quickref.html#option-list
 - debugging infra: https://www.darricheng.com/posts/setting-up-nodejs-debugging-in-neovim/
+- attach to process running inside of Docker container: https://medium.com/@ryan.matthews.professional/debug-a-node-js-project-running-in-docker-6a16b786821d
 
 # Tips
 
