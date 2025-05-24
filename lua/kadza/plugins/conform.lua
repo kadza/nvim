@@ -19,12 +19,6 @@ return {
       end,
     }
 
-    conform.formatters.xmlstarlet = {
-      command = "xmlstarlet",
-      args = { "format", "--indent-spaces", "2" },
-      stdin = true,
-    }
-
     conform.setup({
       formatters_by_ft = {
         javascript = { "prettier", "eslint_d" },
@@ -42,7 +36,6 @@ return {
         lua = { "stylua" },
         python = { "isort", "black" },
         rust = { "rustfmt", lsp_format = "fallback" },
-        xml = { "xmlstarlet" },
       },
       format_on_save = function(bufnr)
         -- Disable with a global or buffer-local variable
