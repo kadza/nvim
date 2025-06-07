@@ -5,3 +5,5 @@ local xml_format = require("kadza.myplugins.format-xml")
 vim.api.nvim_create_user_command("FormatXml", function()
   xml_format.format_buffer()
 end, {})
+
+-- vim.lsp.set_log_level("debug")

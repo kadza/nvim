@@ -31,3 +31,8 @@
 # Tips
 
 https://www.youtube.com/watch?v=5BU2gBOe9RU
+
+# Lsp debugging
+
+Uncomment in init.lua vim.lsp.set_log_level("debug"). Logs are in .local/state/nvim/lsp.log
+Run `:LspInfo`
