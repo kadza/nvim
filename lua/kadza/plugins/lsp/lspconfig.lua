@@ -1,3 +1,20 @@
+-- Add global diagnostic configuration using vim.diagnostic.config
+-- vim.diagnostic.config({
+--   virtual_text = {
+--     prefix = "●", -- Could be '●', '▎', 'x'
+--   },
+--   signs = true,
+--   underline = true,
+--   update_in_insert = false,
+--   severity_sort = true,
+--   float = {
+--     border = "rounded",
+--     source = "always", -- Or 'if_many'
+--     header = "",
+--     prefix = "",
+--   },
+-- })
+
 return {
   "neovim/nvim-lspconfig",
   event = { "BufReadPre", "BufNewFile" },
@@ -9,9 +26,6 @@ return {
   config = function()
     -- import lspconfig plugin
     local lspconfig = require("lspconfig")
-
-    -- import mason_lspconfig plugin
-    local mason_lspconfig = require("mason-lspconfig")
 
     -- import cmp-nvim-lsp plugin
     local cmp_nvim_lsp = require("cmp_nvim_lsp")
@@ -69,81 +83,93 @@ return {
 
     -- Change the Diagnostic symbols in the sign column (gutter)
     -- (not in youtube nvim video)
-    local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
-    for type, icon in pairs(signs) do
-      local hl = "DiagnosticSign" .. type
-      vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-    end
+    -- Add global diagnostic configuration using vim.diagnostic.config
+    -- vim.diagnostic.config({
+    --   virtual_text = {
+    --     prefix = "●", -- Could be '●', '▎', 'x'
+    --   },
+    --   signs = {
+    --     active = {
+    --       { name = "DiagnosticSignError", text = " " },
+    --       { name = "DiagnosticSignWarn", text = " " },
+    --       { name = "DiagnosticSignHint", text = "󰠠 " },
+    --       { name = "DiagnosticSignInfo", text = " " },
+    --     },
+    --   },
+    --   underline = true,
+    --   update_in_insert = false,
+    --   severity_sort = true,
+    --   float = {
+    --     border = "rounded",
+    --     source = "always", -- Or 'if_many'
+    --     header = "",
+    --     prefix = "",
+    --   },
+    -- })
 
-    mason_lspconfig.setup_handlers({
-      -- default handler for installed servers
-      function(server_name)
-        lspconfig[server_name].setup({
-          capabilities = capabilities,
-        })
-      end,
-      ["graphql"] = function()
-        lspconfig["graphql"].setup({
-          capabilities = capabilities,
-          filetypes = { "graphql", "gql" },
-        })
-      end,
-      ["lua_ls"] = function()
-        lspconfig["lua_ls"].setup({
-          capabilities = capabilities,
-          settings = {
-            Lua = {
-              -- make the language server recognize "vim" global
-              diagnostics = {
-                globals = { "vim" },
-              },
-              completion = {
-                callSnippet = "Replace",
-              },
-            },
+    -- Define diagnostic signs
+    -- for _, sign in ipairs(vim.diagnostic.config().signs.active) do
+    --   vim.fn.sign_define(sign.name, { text = sign.text, texthl = sign.name, numhl = "" })
+    -- end
+
+    vim.lsp.enable("stylelint_lsp")
+    vim.lsp.config("stylelint_lsp", {
+      root_markers = { ".git" },
+      settings = {
+        stylelintplus = {
+          autoFixOnFormat = true,
+          autoFixOnSave = true,
+        },
+      },
+    })
+
+    vim.lsp.enable("vtsls")
+    vim.lsp.config("vtsls", {
+      root_markers = { ".git" },
+      settings = {
+        typescript = {
+          preferences = {
+            importModuleSpecifier = "relative",
           },
-        })
-      end,
-      ["vtsls"] = function()
-        lspconfig["vtsls"].setup({
-          capabilities = capabilities,
-          settings = {
-            typescript = {
-              preferences = {
-                importModuleSpecifier = "relative",
-              },
-            },
+        },
+      },
+    })
+
+    vim.lsp.config("graphql", {
+      filetypes = { "graphql", "gql" },
+      root_markers = { ".git" },
+    })
+
+    vim.lsp.config("lua_ls", {
+      settings = {
+        Lua = {
+          -- make the language server recognize "vim" global
+          diagnostics = {
+            globals = { "vim" },
           },
-        })
-      end,
-      ["stylelint_lsp"] = function()
-        lspconfig["stylelint_lsp"].setup({
-          capabilities = capabilities,
-          filetypes = { "css", "scss", "less", "sass" },
-          settings = {
-            stylelintplus = {
-              autoFixOnFormat = true,
-              autoFixOnSave = true,
-            },
+          completion = {
+            callSnippet = "Replace",
           },
-        })
-      end,
-      ["rust_analyzer"] = function()
-        lspconfig["rust_analyzer"].setup({
-          capabilities = capabilities,
-          settings = {
-            ["rust-analyzer"] = {
-              cargo = { allFeatures = true },
-              checkOnSave = {
-                command = "clippy",
-              },
-              procMacro = {
-                enable = true,
-              },
-            },
+        },
+      },
+    })
+
+    vim.lsp.config("rust_analyzer", {
+      settings = {
+        ["rust-analyzer"] = {
+          cargo = { allFeatures = true },
+          checkOnSave = {
+            command = "clippy",
           },
-        })
-      end,
+          procMacro = {
+            enable = true,
+          },
+        },
+      },
+    })
+
+    vim.lsp.config("*", {
+      capabilities = capabilities,
     })
   end,
 }
