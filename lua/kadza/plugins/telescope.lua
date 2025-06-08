@@ -20,6 +20,8 @@ return {
             ["<C-k>"] = actions.move_selection_previous,
             ["<C-j>"] = actions.move_selection_next,
             ["<C-h>"] = require("telescope.actions").cycle_history_prev,
+            ["<C-i>"] = actions.results_scrolling_up,
+            ["<C-u>"] = actions.results_scrolling_down,
           },
         },
       },
