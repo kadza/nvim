@@ -1,20 +1,3 @@
--- Add global diagnostic configuration using vim.diagnostic.config
--- vim.diagnostic.config({
---   virtual_text = {
---     prefix = "●", -- Could be '●', '▎', 'x'
---   },
---   signs = true,
---   underline = true,
---   update_in_insert = false,
---   severity_sort = true,
---   float = {
---     border = "rounded",
---     source = "always", -- Or 'if_many'
---     header = "",
---     prefix = "",
---   },
--- })
-
 return {
   "neovim/nvim-lspconfig",
   event = { "BufReadPre", "BufNewFile" },
@@ -84,33 +67,35 @@ return {
     -- Change the Diagnostic symbols in the sign column (gutter)
     -- (not in youtube nvim video)
     -- Add global diagnostic configuration using vim.diagnostic.config
-    -- vim.diagnostic.config({
-    --   virtual_text = {
-    --     prefix = "●", -- Could be '●', '▎', 'x'
-    --   },
-    --   signs = {
-    --     active = {
-    --       { name = "DiagnosticSignError", text = " " },
-    --       { name = "DiagnosticSignWarn", text = " " },
-    --       { name = "DiagnosticSignHint", text = "󰠠 " },
-    --       { name = "DiagnosticSignInfo", text = " " },
-    --     },
-    --   },
-    --   underline = true,
-    --   update_in_insert = false,
-    --   severity_sort = true,
-    --   float = {
-    --     border = "rounded",
-    --     source = "always", -- Or 'if_many'
-    --     header = "",
-    --     prefix = "",
-    --   },
-    -- })
-
-    -- Define diagnostic signs
-    -- for _, sign in ipairs(vim.diagnostic.config().signs.active) do
-    --   vim.fn.sign_define(sign.name, { text = sign.text, texthl = sign.name, numhl = "" })
-    -- end
+    vim.diagnostic.config({
+      virtual_text = {
+        prefix = "●",
+      },
+      signs = {
+        text = {
+          [vim.diagnostic.severity.ERROR] = " ",
+          [vim.diagnostic.severity.WARN] = " ",
+          [vim.diagnostic.severity.INFO] = "󰠠 ",
+          [vim.diagnostic.severity.HINT] = " ",
+        },
+        linehl = {
+          [vim.diagnostic.severity.ERROR] = "ErrorMsg",
+        },
+        numhl = {
+          [vim.diagnostic.severity.ERROR] = "ErrorMsg",
+          [vim.diagnostic.severity.WARN] = "WarningMsg",
+        },
+      },
+      underline = true,
+      update_in_insert = false,
+      severity_sort = true,
+      float = {
+        border = "rounded",
+        source = "always", -- Or 'if_many'
+        header = "",
+        prefix = "",
+      },
+    })
 
     vim.lsp.enable("stylelint_lsp")
     vim.lsp.config("stylelint_lsp", {
