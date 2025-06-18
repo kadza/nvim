@@ -108,7 +108,7 @@ return {
       },
     })
 
-    vim.lsp.enable("vtsls")
+    -- vim.lsp.enable("vtsls")
     vim.lsp.config("vtsls", {
       root_markers = { ".git" },
       settings = {
@@ -152,6 +152,30 @@ return {
         },
       },
     })
+
+    vim.lsp.config["eslint-container"] = {
+      cmd = { "nc", "localhost", "8081" },
+      root_markers = { ".git" },
+      settings = {
+        stylelintplus = {
+          autoFixOnFormat = true,
+          autoFixOnSave = true,
+        },
+      },
+      filetypes = { "javascript", "typescript", "javascriptreact", "typescriptreact" },
+    }
+    -- vim.lsp.enable("eslint-container")
+
+    vim.lsp.config("eslint", {
+      root_markers = { ".git" },
+      settings = {
+        stylelintplus = {
+          autoFixOnFormat = true,
+          autoFixOnSave = true,
+        },
+      },
+    })
+    vim.lsp.enable("eslint")
 
     vim.lsp.config("*", {
       capabilities = capabilities,

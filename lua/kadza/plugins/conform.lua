@@ -4,27 +4,12 @@ return {
   config = function()
     local conform = require("conform")
 
-    conform.formatters.eslint_d = {
-      command = "eslint_d",
-      args = {
-        "--fix-to-stdout",
-        "--stdin",
-        "--stdin-filename",
-        "$FILENAME",
-      },
-      stdin = true,
-      on_output = function(output, ctx)
-        -- Replace the entire buffer content with the fixed output from eslint_d
-        vim.api.nvim_buf_set_lines(ctx.buf, 0, -1, false, vim.split(output, "\n"))
-      end,
-    }
-
     conform.setup({
       formatters_by_ft = {
-        javascript = { "prettier", "eslint_d" },
-        typescript = { "prettier", "eslint_d" },
-        javascriptreact = { "prettier", "eslint_d" },
-        typescriptreact = { "prettier", "eslint_d" },
+        javascript = { "prettier" },
+        typescript = { "prettier" },
+        javascriptreact = { "prettier" },
+        typescriptreact = { "prettier" },
         svelte = { "prettier" },
         css = { "prettier" },
         html = { "prettier" },
