@@ -115,6 +115,7 @@ return {
         typescript = {
           preferences = {
             importModuleSpecifier = "relative",
+            jsxAttributeCompletionStyle = "braces",
           },
         },
       },
