@@ -33,6 +33,7 @@ return {
         markdown = { "prettier" },
         graphql = { "prettier" },
         liquid = { "prettier" },
+        astro = { "prettier" },
         lua = { "stylua" },
         python = { "isort", "black" },
         rust = { "rustfmt", lsp_format = "fallback" },
