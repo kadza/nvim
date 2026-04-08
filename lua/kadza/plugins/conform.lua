@@ -37,6 +37,17 @@ return {
         lua = { "stylua" },
         python = { "isort", "black" },
       },
+      formatters = {
+        prettier = {
+          command = function(_, ctx)
+            local local_prettier = ctx.dirname .. "/node_modules/.bin/prettier"
+            if vim.fn.executable(local_prettier) == 1 then
+              return local_prettier
+            end
+            return "prettier"
+          end,
+        },
+      },
       format_on_save = function(bufnr)
         -- Disable with a global or buffer-local variable
         if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
