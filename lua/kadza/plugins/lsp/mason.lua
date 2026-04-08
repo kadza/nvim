@@ -30,7 +30,6 @@ return {
         "prettierd", -- prettier formatter
         "pylint",
         "stylelint",
-        "rustfmt", -- Rust formatter
         "stylua", -- lua formatter
       },
     })

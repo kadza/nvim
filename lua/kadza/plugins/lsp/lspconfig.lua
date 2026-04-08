@@ -117,6 +117,9 @@ return {
             importModuleSpecifier = "relative",
             jsxAttributeCompletionStyle = "braces",
           },
+          tsserver = {
+            maxTsServerMemory = 8192,
+          },
         },
       },
     })
@@ -135,20 +138,6 @@ return {
           },
           completion = {
             callSnippet = "Replace",
-          },
-        },
-      },
-    })
-
-    vim.lsp.config("rust_analyzer", {
-      settings = {
-        ["rust-analyzer"] = {
-          cargo = { allFeatures = true },
-          checkOnSave = {
-            command = "clippy",
-          },
-          procMacro = {
-            enable = true,
           },
         },
       },
