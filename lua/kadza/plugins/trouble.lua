@@ -4,6 +4,12 @@ return {
   opts = {
     focus = true,
     wrap = true,
+    win = {
+      wo = {
+        wrap = true,
+        linebreak = true,
+      },
+    },
   },
   cmd = "Trouble",
   keys = {
