@@ -4,6 +4,19 @@ return {
   config = function()
     local conform = require("conform")
 
+    conform.formatters.oxfmt = {
+      condition = function(_, ctx)
+        return vim.fn.findfile(".oxfmtrc.json", ctx.dirname .. ";") ~= ""
+      end,
+      command = "corepack",
+      args = { "pnpm", "run", "format", "$FILENAME" },
+      stdin = false,
+      cwd = function(_, ctx)
+        local config = vim.fn.findfile(".oxfmtrc.json", ctx.dirname .. ";")
+        return vim.fn.fnamemodify(config, ":p:h")
+      end,
+    }
+
     conform.formatters.eslint_d = {
       command = "eslint_d",
       args = {
@@ -21,10 +34,10 @@ return {
 
     conform.setup({
       formatters_by_ft = {
-        javascript = { "prettier", "eslint_d" },
-        typescript = { "prettier", "eslint_d" },
-        javascriptreact = { "prettier", "eslint_d" },
-        typescriptreact = { "prettier", "eslint_d" },
+        javascript = { "oxfmt", "prettier", "eslint_d" },
+        typescript = { "oxfmt", "prettier", "eslint_d" },
+        javascriptreact = { "oxfmt", "prettier", "eslint_d" },
+        typescriptreact = { "oxfmt", "prettier", "eslint_d" },
         svelte = { "prettier" },
         css = { "prettier" },
         html = { "prettier" },
@@ -39,6 +52,9 @@ return {
       },
       formatters = {
         prettier = {
+          condition = function(_, ctx)
+            return vim.fn.findfile(".oxfmtrc.json", ctx.dirname .. ";") == ""
+          end,
           command = function(_, ctx)
             local local_prettier = ctx.dirname .. "/node_modules/.bin/prettier"
             if vim.fn.executable(local_prettier) == 1 then
