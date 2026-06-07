@@ -28,7 +28,6 @@ return {
         "isort", -- python formatter
         "js-debug-adapter", -- javascript/typescript debugger
         "prettierd", -- prettier formatter
-        "pylint",
         "stylelint",
         "stylua", -- lua formatter
       },
